@@ -1,0 +1,33 @@
+version: "2.7"
+
+server:
+  command: "php -d zend_extension=/usr/lib/php81/modules/xdebug.so -d xdebug.mode=debug -d xdebug.remote_enable=1 -d xdebug.discover_client_host=1 -d xdebug.client_host=172.17.0.1 public/index.php"
+  env:
+    - APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
+    - XDEBUG_SESSION: "1"
+
+http:
+  address: 0.0.0.0:8080
+  pool:
+    num_workers: 5
+    debug: true
+
+logs:
+  mode: development
+  channels:
+    http:
+      level: debug # Log all http requests, set to info to disable
+    server:
+      level: info # Everything written to worker stderr is logged
+      mode: raw
+    metrics:
+      level: debug
+
+reload:
+  enabled: true
+  interval: 1s
+  patterns: [".php", ".yaml"]
+  services:
+    http:
+      dirs: ["."]
+      recursive: true

@@ -1,0 +1,33 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
+framework:
+    secret: '%env(APP_SECRET)%'
+    #csrf_protection: true
+    http_method_override: false
+
+    # Enables session support. Note that the session will ONLY be started if you read or write from it.
+    # Remove or comment this section to explicitly disable session support.
+    session:
+        handler_id: null
+        cookie_secure: auto
+        cookie_samesite: lax
+        storage_factory_id: session.storage.factory.native
+
+    #esi: true
+    #fragments: true
+    php_errors:
+        log: true
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
+
+parameters:
+    # настройки кайтона
+    fetch_cards_url: '%env(string:FETCH_CARDS_URL)%'
+    link_prop_id: '%env(string:LINK_PROP_ID)%'
+    auth: '%env(string:AUTH)%'
+    # настройки телеграма
+    telegram_token: '%env(string:TELEGRAM_TOKEN)%'
+    app_url: '%env(string:APP_URL)%'

@@ -1,0 +1,27 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+health:
+    path: /health
+    methods: GET
+    controller: App\Controller\MainController::health
+
+updates:
+    path: /updates
+    methods: GET|POST
+    controller: App\Controller\MainController::updates
+
+taken_sandbox:
+    path: /taken/{slug}
+    methods: GET
+    controller: App\Controller\MainController::taken
+
+free_sandbox:
+    path: /free/{slug}
+    methods: GET
+    controller: App\Controller\MainController::free

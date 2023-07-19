@@ -1,0 +1,19 @@
+### phpstorm ###
+/.idea
+###
+###> symfony/framework-bundle ###
+/app/.env.local
+/app/.env.local.php
+/app/.env.*.local
+/app/public/bundles/
+/app/var/
+/app/vendor/
+###< symfony/framework-bundle ###
+
+###> baldinof/roadrunner-bundle ###
+/app/bin/rr
+###< baldinof/roadrunner-bundle ###
+
+/data
+
+docker-compose.override.yml
